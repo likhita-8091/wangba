@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="panel panel-default" style="margin-top: 20px;width: 500px">
+  <div class="panel-heading">{{ author.name }}{{ publish.name }}&nbsp;&nbsp;出版所有书籍</div>
+
+    <div class="list-group-item">用户名：{{ user.name }}</div>
+    <div class="list-group-item">账户：{{ user.account }}</div>
+    <div class="list-group-item">手机号：{{ user.phone }}</div>
+
+</div>
+{% endblock %}

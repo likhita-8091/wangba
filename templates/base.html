@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}
+    {% endblock %}
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 100px;
+        }
+
+        .book_add {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .table, .table th {
+            text-align: center;
+            line-height: 51px;
+        }
+
+        .action {
+            margin-top: 20px;
+
+        }
+
+        .panel-default > .panel-heading {
+            color: #333;
+            background-color: #ea4322;
+            border-color: #ddd;
+        }
+
+        .aaa {
+
+            padding: 0;
+            border: none;
+        }
+
+        .list-group a:hover {
+            color: white;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .list-group a {
+            display: block;
+            background-color: #dff0d8;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="btn-group" style="float: right;margin-right: 100px">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            设置 <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">修改密码</a></li>
+            <li><a href="/logout">退出</a></li>
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default action">
+                <div class="panel-heading">操作</div>
+                <ul class="list-group">
+                    <li class="list-group-item aaa"><a href="{% url 'wang_guan_list' %}">网管列表</a></li>
+                    <li class="list-group-item aaa"><a href="{% url 'hui_yuan_list' %}">会员列表</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script src="/static/jquery.js"></script>
+<script src="/static/bootstrap-3.3.7/js/bootstrap.js"></script>
+</body>
+</html>

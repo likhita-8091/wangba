@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>会员列表</title>
+{% endblock %}
+
+{% block body %}
+<div class="panel panel-success action" style="width: 1000px;margin-left: 30px">
+    <div class="panel-heading clearfix">会员列表
+        <a href="{% url 'hui_yuan_add' %}">
+            <button class="btn btn-success pull-right">&nbsp;&nbsp;添加会员&nbsp;&nbsp;</button>
+        </a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>会员姓名</th>
+            <th>会员账号</th>
+            <th>备注</th>
+            <th>手机号</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hui_yuan in hui_yuan_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="/hui_yuan/{{ hui_yuan.id }}/">{{ hui_yuan.name }}</a></td>
+            <td>{{ hui_yuan.account }}</td>
+            <td>{{ hui_yuan.note }}</td>
+            <td>{{ hui_yuan.phone }}</td>
+            <td>{{ hui_yuan.sex }}</td>
+            <td>{{ hui_yuan.u_age }}</td>
+            <td>
+                <a href="/hui_yuan_edit/{{ hui_yuan.id }}">
+                    <button class="btn btn-primary">编辑</button>
+                </a>
+                <a href="/hui_yuan_del/{{ hui_yuan.id }}">
+                    <button class="btn btn-danger">删除</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

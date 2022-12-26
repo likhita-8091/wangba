@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <title>网管列表</title>
+{% endblock %}
+
+{% block body %}
+    <h3>网管列表</h3>
+    <a href="{% url 'book_add' %}" class="btn btn-default" style="margin-top:10px;margin-bottom: 10px">添加书籍</a>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>书籍名称</th>
+            <th>价格</th>
+            <th>出版日期</th>
+            <th>作者</th>
+            <th>出版社</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="book_list">
+        {% for book in book_list %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.pub_date|date:"Y-m-d" }}</td>
+                <td>
+                    {% for author in book.author.all %}
+                        <span><a href="/author/{{ author.id }}/">{{ author.name }}&nbsp;</a></span>
+                    {% endfor %}
+                </td>
+                <td><a href="/publish/{{ book.publish.id }}/">{{ book.publish.name }}</a></td>
+                <td>
+                    <a href="{% url 'book_edit' book.id %}">
+                        <button class="btn btn-success">编辑</button>
+                    </a>
+                    <a href="{% url 'book_del' book.id %}">
+                        <button class="btn btn-danger">删除</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
