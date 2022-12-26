@@ -16,6 +16,7 @@ def login(request):
         if len(res) == 1:
             # 设置session
             request.session["user"] = user
+            request.session["role"] = res[0].role
             # 获取跳到登陆页面之前的URL
             next_url = request.GET.get("next")
             # 如果有，就跳转回登陆之前的URL
