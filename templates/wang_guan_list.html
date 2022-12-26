@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>网管列表</title>
+{% endblock %}
+
+{% block body %}
+<div class="panel panel-success action" style="width: 1000px;margin-left: 30px">
+    <div class="panel-heading clearfix">网管列表
+        <a href="{% url 'wang_guan_add' %}">
+            <button class="btn btn-success pull-right">&nbsp;&nbsp;添加网管&nbsp;&nbsp;</button>
+        </a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>网管姓名</th>
+            <th>网管账号</th>
+            <th>备注</th>
+            <th>手机号</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for wang_guan in wang_guan_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="/wang_guan/{{ wang_guan.id }}/">{{ wang_guan.name }}</a></td>
+            <td>{{ wang_guan.account }}</td>
+            <td>{{ wang_guan.note }}</td>
+            <td>{{ wang_guan.phone }}</td>
+            <td>{{ wang_guan.sex }}</td>
+            <td>{{ wang_guan.u_age }}</td>
+            <td>
+                <a href="/wang_guan_edit/{{ wang_guan.id }}">
+                    <button class="btn btn-primary">编辑</button>
+                </a>
+                <a href="/wang_guan_del/{{ wang_guan.id }}">
+                    <button class="btn btn-danger">删除</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<form action="" method="post" style="width: 500px;margin-top: 20px">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" class="form-control" id="name" value="{{ user.name }}" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="note">备注</label>
+        <input type="text" class="form-control" id="note" value="{{ user.note }}" name="note">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">手机号</label>
+        <input type="text" class="form-control" id="phone" value="{{ user.phone }}" name="phone">
+    </div>
+
+    <div class="form-group">
+        <label for="sex">性别</label>
+        <input type="text" class="form-control" id="sex" value="{{ user.sex }}" name="sex">
+    </div>
+
+    <div class="form-group">
+        <label for="age">年龄</label>
+        <input type="text" class="form-control" id="age" name="age" value="{{ user.u_age }}">
+    </div>
+
+    {% if user.role == 2 %}
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="text" class="form-control" id="password" name="password" value="{{ user.password }}">
+    </div>
+    {% endif %}
+
+    <input type="submit" class="btn btn-success" value="提交">
+</form>
